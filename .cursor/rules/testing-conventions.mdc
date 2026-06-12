@@ -1,0 +1,30 @@
+---
+description: Testing conventions for Hermes
+globs: **/*.{test,spec}.ts
+alwaysApply: false
+---
+
+# Testing Conventions
+
+- Use Vitest. Tests are deterministic, independent, and require no external
+  network.
+- Unit tests cover all business logic (services, processors, utilities) and mock
+  AWS clients with `aws-sdk-client-mock`.
+- Integration tests run against LocalStack and cover each Lambda's happy path,
+  failure path, and (for SQS) duplicate delivery.
+- Name tests by behaviour: `it("rejects an invalid filename")`.
+- Cover edge cases: validation failures, not-found, retries, idempotent
+  re-processing.
+
+```typescript
+import { mockClient } from "aws-sdk-client-mock";
+import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
+
+const ddbMock = mockClient(DynamoDBDocumentClient);
+
+it("creates an UPLOADED document", async () => {
+  ddbMock.on(PutCommand).resolves({});
+  const result = await uploadService.createUploadUrl({ filename: "a.pdf" });
+  expect(result.documentId).toBeDefined();
+});
+```

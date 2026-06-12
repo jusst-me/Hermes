@@ -1,0 +1,27 @@
+---
+description: Terraform / IaC conventions for Hermes
+globs: **/*.tf
+alwaysApply: false
+---
+
+# Terraform Conventions
+
+- All AWS resources are managed in Terraform; no manual console changes.
+- Organise as reusable modules (`modules/`) consumed by environments
+  (`environments/local`, `environments/dev`). Each module has `variables.tf`,
+  `main.tf`, `outputs.tf`.
+- The `local` environment targets LocalStack endpoints; `dev` targets real AWS.
+- Always run `terraform fmt` and `terraform validate`; tflint and Checkov must
+  pass.
+- IAM policies are least privilege and resource-scoped (no `*` on resources or
+  actions unless justified with a comment).
+- No secrets in code or state; use SSM Parameter Store / Secrets Manager.
+- Name resources with a consistent prefix and environment suffix.
+
+```hcl
+# GOOD: scoped, least-privilege statement
+statement {
+  actions   = ["dynamodb:PutItem", "dynamodb:UpdateItem"]
+  resources = [aws_dynamodb_table.documents.arn]
+}
+```

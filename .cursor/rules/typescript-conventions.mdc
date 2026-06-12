@@ -1,0 +1,28 @@
+---
+description: TypeScript conventions for Hermes
+globs: **/*.ts
+alwaysApply: false
+---
+
+# TypeScript Conventions
+
+- `strict` mode; no implicit `any`. Avoid `any` — use `unknown` and narrow.
+- Explicit return types on exported functions.
+- Validate external input with Zod at boundaries; infer types from schemas.
+- Keep the layering: `handler -> service -> repository/processor`. Services
+  contain no AWS SDK calls; those live in repositories behind interfaces.
+- Throw typed domain errors; never swallow errors silently.
+- All code and comments in English.
+
+```typescript
+// BAD: swallowed error, AWS detail leaking into the service
+try { await ddb.send(cmd); } catch (e) {}
+
+// GOOD: repository wraps AWS, service stays clean, error is typed + logged
+try {
+  await documentRepository.create(doc);
+} catch (cause) {
+  logger.error("Failed to create document", { documentId: doc.id, cause });
+  throw new DocumentPersistError(doc.id, { cause });
+}
+```

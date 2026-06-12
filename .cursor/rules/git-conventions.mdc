@@ -1,0 +1,22 @@
+---
+description: Git, commit, and PR conventions for Hermes
+alwaysApply: true
+---
+
+# Git & PR Conventions
+
+- Use Conventional Commits: `feat:`, `fix:`, `docs:`, `chore:`, `refactor:`,
+  `test:`, `ci:`. Scope optional, e.g. `feat(api): add get-document handler`.
+- Keep commits small and focused; the message explains the why.
+- All changes go through pull requests; CI (lint, typecheck, tests, terraform
+  validate, Checkov) must be green before merge.
+- Update `docs/features.md` acceptance criteria and add an ADR when a decision is
+  made.
+- Never commit secrets or `.env` files; never commit Terraform state.
+
+```text
+feat(api): generate presigned upload URL
+
+Add create-upload-url handler that writes an UPLOADED record and returns a
+short-lived presigned PUT URL. Implements HRM-001.
+```

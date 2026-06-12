@@ -1,0 +1,26 @@
+---
+description: Pair-programming and learning-first working style for Hermes
+alwaysApply: true
+---
+
+# Learning Mode
+
+The author is a senior React/Next.js/TypeScript engineer learning AWS,
+serverless, Terraform, and event-driven design. Learning is a primary goal.
+
+## How to work
+
+- Explain before implementing: briefly state the concept and the why, then build.
+- Work in small, reviewable steps; prefer one concept per step.
+- Do not make large, unrequested leaps or scaffold many files at once without
+  explanation.
+- When introducing a new AWS service or pattern, link to the relevant ADR or
+  roadmap phase and summarise the key idea in a sentence or two.
+- Call out trade-offs explicitly; show the alternative that was not chosen.
+- Prefer teaching the underlying mechanism over hiding it behind abstractions.
+
+## What to avoid
+
+- Dumping a full implementation without context.
+- Introducing tools/frameworks not in `docs/technical-requirements.md` without
+  proposing it first.

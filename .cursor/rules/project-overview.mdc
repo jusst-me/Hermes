@@ -1,0 +1,32 @@
+---
+description: What Hermes is and how it is structured
+alwaysApply: true
+---
+
+# Hermes — Project Overview
+
+Hermes is a production-grade, serverless document-processing platform on AWS,
+built as a portfolio and learning project. Authoritative docs live in `docs/`:
+
+- Architecture: `docs/architecture.md`
+- Technical requirements & quality bar: `docs/technical-requirements.md`
+- Features (source of truth): `docs/features.md`
+- Decisions: `docs/adr/`
+- Step-by-step learning path: `docs/roadmap/`
+
+## Core architecture
+
+- Flow: `API Gateway -> Upload Lambda -> S3 (presigned) -> EventBridge -> SQS ->
+  Processing Lambda -> DynamoDB`, read via `Get Document Lambda`.
+- Layered/hexagonal per Lambda: `handler -> service -> repository/processor`
+  (behind interfaces). Not MVC.
+- DynamoDB single-table-light (PK=documentId + SK + 1 GSI).
+- Reliability via SQS DLQ + idempotency (conditional writes + Powertools
+  Idempotency).
+
+## Stack
+
+TypeScript (strict), AWS Lambda (Node 22), Middy, Zod, AWS SDK v3, Lambda
+Powertools, Terraform, LocalStack (dev), Vitest, GitHub Actions. pnpm + Turborepo.
+
+When a decision is significant, add an ADR. Keep `docs/features.md` in sync.

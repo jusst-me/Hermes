@@ -1,0 +1,31 @@
+---
+description: AWS Lambda handler conventions for Hermes
+globs: apps/api/src/functions/**/*.ts
+alwaysApply: false
+---
+
+# Lambda Handler Conventions
+
+- One function per use-case. The handler is a thin adapter; business logic lives
+  in a service.
+- Use Middy for cross-cutting concerns and Zod for input validation.
+- Use Lambda Powertools: Logger (structured logs + correlation ids), Metrics, and
+  Tracer. For SQS handlers, use the Idempotency utility where re-processing must
+  be prevented.
+- SQS batch handlers must return `ReportBatchItemFailures` so only failed records
+  retry.
+- Enforce document state transitions with DynamoDB conditional writes.
+- IAM is least privilege: request only the permissions the function needs.
+
+```typescript
+// handler -> validate -> delegate to service
+const baseHandler = async (event: APIGatewayProxyEventV2) => {
+  const body = createUploadSchema.parse(JSON.parse(event.body ?? "{}"));
+  const result = await uploadService.createUploadUrl(body);
+  return { statusCode: 201, body: JSON.stringify(result) };
+};
+
+export const handler = middy(baseHandler)
+  .use(injectLambdaContext(logger))
+  .use(httpErrorHandler());
+```
