@@ -23,6 +23,9 @@
     "*.{ts,mts,mjs,json,md,yaml,yml}": "prettier --write"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
+    "@commitlint/types": "^21.0.1",
     "@eslint/js": "^10.0.1",
     "@types/node": "^25.9.3",
     "eslint": "^10.5.0",
