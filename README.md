@@ -62,21 +62,28 @@ Full details: [docs/architecture.md](./docs/architecture.md).
 
 ## Local setup
 
-> Prerequisites: Node.js 22+, pnpm, Docker, Terraform.
+> Prerequisites: Node.js 22+, pnpm, Docker.
+> Terraform is needed from Phase 1 onward.
 
 ```bash
-# Install dependencies
+# Clone and install
+git clone git@github.com:jusst-me/Hermes.git
+cd Hermes
 pnpm install
 
 # Start LocalStack (emulated AWS)
 docker compose up -d
+docker compose ps          # should show localstack as "healthy"
 
-# Provision local infrastructure
-cd infrastructure/terraform/environments/local
-terraform init && terraform apply
+# Run quality checks
+pnpm lint                  # ESLint
+pnpm format:check          # Prettier
+pnpm turbo run typecheck   # TypeScript strict
+pnpm test                  # Vitest
 
-# Run checks
-pnpm turbo run lint typecheck test
+# (Phase 1+) Provision local infrastructure
+# cd infrastructure/terraform/environments/local
+# terraform init && terraform apply
 ```
 
 Detailed steps are added per phase in [docs/roadmap/](./docs/roadmap/).
