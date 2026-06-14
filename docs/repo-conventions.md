@@ -23,6 +23,12 @@ quality bar see [technical-requirements.md](./technical-requirements.md).
 - CI gates: lint, typecheck, tests, `terraform validate`, Checkov.
 - Update `features.md` and add an ADR when a decision is made.
 
+## Tags
+
+- Each completed roadmap phase gets an annotated tag: `phase-0`, `phase-1`, etc.
+- Tags mark stable milestones and make it easy to navigate the learning path in
+  git history.
+
 ## What is never committed
 
 - Secrets and `.env` files (only `.env.example` is committed).
