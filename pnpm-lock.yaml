@@ -42,6 +42,14 @@ importers:
         specifier: ^4.1.8
         version: 4.1.8(@types/node@25.9.3)(vite@8.0.16(@types/node@25.9.3)(yaml@2.9.0))
 
+  apps/api:
+    dependencies:
+      '@hermes/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+
+  packages/core: {}
+
 packages:
 
   '@emnapi/core@1.10.0':
