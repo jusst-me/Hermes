@@ -71,7 +71,8 @@ git clone git@github.com:jusst-me/Hermes.git
 cd Hermes
 pnpm install
 
-# Start LocalStack (emulated AWS)
+# Set up LocalStack auth (free account required since March 2026)
+cp .env.example .env       # then add your token from https://app.localstack.cloud
 docker compose up -d
 docker compose ps          # should show localstack as "healthy"
 

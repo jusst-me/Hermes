@@ -4,8 +4,8 @@ services:
     ports:
       - "4566:4566"
     environment:
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
       - SERVICES=s3,dynamodb,sqs,events,lambda,apigateway,cloudwatch,iam,logs,sts
-      - DEFAULT_REGION=eu-west-1
       - DEBUG=0
     volumes:
       - localstack-data:/var/lib/localstack
