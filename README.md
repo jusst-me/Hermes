@@ -46,19 +46,19 @@ Full details: [docs/architecture.md](./docs/architecture.md).
 
 ## Tech stack
 
-| Area | Choice |
-| --- | --- |
-| Language | TypeScript (strict) |
-| Monorepo | pnpm workspaces + Turborepo |
-| Compute | AWS Lambda (Node.js 22), Middy, Zod |
-| Toolkit | AWS Lambda Powertools (Logger/Metrics/Tracer/Idempotency) |
-| Data | DynamoDB (single-table-light), S3 |
-| Eventing | EventBridge + SQS (+ DLQ) |
-| IaC | Terraform |
-| Local dev | Docker Compose + LocalStack |
-| Testing | Vitest (+ `aws-sdk-client-mock`, LocalStack) |
-| CI/CD | GitHub Actions |
-| Frontend | Next.js + Tailwind + React Query (later) |
+| Area      | Choice                                                    |
+| --------- | --------------------------------------------------------- |
+| Language  | TypeScript (strict)                                       |
+| Monorepo  | pnpm workspaces + Turborepo                               |
+| Compute   | AWS Lambda (Node.js 22), Middy, Zod                       |
+| Toolkit   | AWS Lambda Powertools (Logger/Metrics/Tracer/Idempotency) |
+| Data      | DynamoDB (single-table-light), S3                         |
+| Eventing  | EventBridge + SQS (+ DLQ)                                 |
+| IaC       | Terraform                                                 |
+| Local dev | Docker Compose + LocalStack                               |
+| Testing   | Vitest (+ `aws-sdk-client-mock`, LocalStack)              |
+| CI/CD     | GitHub Actions                                            |
+| Frontend  | Next.js + Tailwind + React Query (later)                  |
 
 ## Local setup
 

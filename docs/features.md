@@ -6,20 +6,20 @@ phase. No external ticket system is used; roadmap phases act as epics.
 
 Status legend: `Planned` · `In progress` · `Done`
 
-| ID | Feature | Phase | Status |
-| --- | --- | --- | --- |
-| HRM-001 | Create upload URL | Phase 2 | Planned |
-| HRM-002 | Document state machine | Phase 2/3 | Planned |
-| HRM-003 | Event-driven processing pipeline | Phase 3 | Planned |
-| HRM-004 | Text extraction | Phase 3 | Planned |
-| HRM-005 | Pluggable processor | Phase 3 | Planned |
-| HRM-006 | Get document | Phase 4 | Planned |
-| HRM-007 | List documents | Phase 4 | Planned |
-| HRM-008 | Error handling & retries (DLQ + idempotency) | Phase 3/5 | Planned |
-| HRM-009 | Observability | Phase 5 | Planned |
-| HRM-010 | Security | All phases | Planned |
-| HRM-011 | CI/CD pipeline | Phase 6 | Planned |
-| HRM-012 | Frontend | Phase 7 | Planned |
+| ID      | Feature                                      | Phase      | Status  |
+| ------- | -------------------------------------------- | ---------- | ------- |
+| HRM-001 | Create upload URL                            | Phase 2    | Planned |
+| HRM-002 | Document state machine                       | Phase 2/3  | Planned |
+| HRM-003 | Event-driven processing pipeline             | Phase 3    | Planned |
+| HRM-004 | Text extraction                              | Phase 3    | Planned |
+| HRM-005 | Pluggable processor                          | Phase 3    | Planned |
+| HRM-006 | Get document                                 | Phase 4    | Planned |
+| HRM-007 | List documents                               | Phase 4    | Planned |
+| HRM-008 | Error handling & retries (DLQ + idempotency) | Phase 3/5  | Planned |
+| HRM-009 | Observability                                | Phase 5    | Planned |
+| HRM-010 | Security                                     | All phases | Planned |
+| HRM-011 | CI/CD pipeline                               | Phase 6    | Planned |
+| HRM-012 | Frontend                                     | Phase 7    | Planned |
 
 ---
 

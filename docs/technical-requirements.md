@@ -46,7 +46,7 @@ the project holds itself to. It is the reference for every implementation choice
 ### CI/CD
 
 - **GitHub Actions**. Pull requests run lint, typecheck, tests, `terraform
-  validate`, and Checkov. The main branch additionally builds and runs
+validate`, and Checkov. The main branch additionally builds and runs
   `terraform plan`/`apply` to deploy to AWS.
 
 ### Frontend (later phase)
